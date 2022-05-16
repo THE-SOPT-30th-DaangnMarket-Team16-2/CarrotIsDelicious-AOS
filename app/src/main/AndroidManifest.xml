@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.sopt.carrot16_2">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,7 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CarrotIsDelicious">
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.read.ReadActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.create.CreateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.main.HomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
