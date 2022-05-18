@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/drawable/ic_line_3.xml" value="0.183" />
+        <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/drawable/selector_radio.xml" value="0.1835" />
         <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/font/roboto.xml" value="0.240625" />
         <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/layout/activity_create.xml" value="0.22" />
+        <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/layout/activity_home.xml" value="0.35" />
         <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.188" />
       </map>
     </option>
