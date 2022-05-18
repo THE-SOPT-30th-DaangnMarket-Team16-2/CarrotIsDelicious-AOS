@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CarrotIsDelicious</string>
+    <string name="item_title">제목</string>
+    <string name="item_category">카테고리</string>
+    <string name="item_won">&#65510;</string>
+    <string name="item_money">가격</string>
+    <string name="item_sug_money">가격 제안받기</string>
+    <string name="item_write">게시글을 작성해주세요</string>
+    <string name="item_word">자주 쓰는 문구</string>
+    <string name="item_town">보여줄 동네 설정</string>
 </resources>

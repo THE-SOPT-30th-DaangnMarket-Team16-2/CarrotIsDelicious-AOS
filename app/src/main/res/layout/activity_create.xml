@@ -9,8 +9,351 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".ui.create.CreateActivity">
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:context=".ui.create.CreateActivity">
+
+            <Button
+                android:id="@+id/btn_back"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/ic_and_btn_back2"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintWidth_percent="0.2"/>
+            <TextView
+                android:id="@+id/tv_write"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="중고거래 글쓰기"
+                app:layout_constraintLeft_toRightOf="@+id/btn_back"
+                android:textSize="60px"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/btn_back"
+                android:textColor="@color/carrot_and_black"
+                android:textFontWeight="600"
+                android:fontFamily="@font/roboto"/>
+            <Button
+                android:id="@+id/btn_finish"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="4:3"
+                app:layout_constraintWidth_percent="0.1"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/tv_write"
+                app:layout_constraintBottom_toBottomOf="@id/btn_back"
+                android:background="@drawable/ic_and_btn_finishxxx"
+                android:layout_marginRight="14dp"
+                app:layout_constraintEnd_toEndOf="parent"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <ScrollView
+            android:id="@+id/sc_create"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/cl_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/cl_top">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_middle"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+                <ImageView
+                    android:id="@+id/iv_line1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:src="@drawable/ic_line_3"/>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_line1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_camera"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="1:1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/cl_image"
+                        app:layout_constraintWidth_percent="0.25">
+
+                        <ImageButton
+                            android:id="@+id/ib_rect"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/ic_rectangle_6"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.483"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.483"
+                            app:layout_constraintWidth_percent="0.7" />
+
+                        <ImageView
+                            android:id="@+id/iv_camera"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintWidth_percent="0.25"
+                            android:layout_marginTop="25dp"
+                            android:src="@drawable/ic_and__icon__camera"/>
+                        <TextView
+                            android:id="@+id/tv_picked_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:textFontWeight="500"
+                            android:textSize="18sp"
+                            android:textColor="@color/carrot_and_black2"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_camera"
+                            android:layout_marginStart="32dp"
+                            android:text="0"/>
+                        <TextView
+                            android:id="@+id/tv_all_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/roboto"
+                            android:textFontWeight="500"
+                            android:textSize="18sp"
+                            android:textColor="@color/carrot_and_black2"
+                            app:layout_constraintStart_toEndOf="@+id/tv_picked_image"
+                            app:layout_constraintTop_toBottomOf="@+id/iv_camera"
+                            android:text="/10"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/cl_rv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintStart_toEndOf="@id/cl_camera"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent">
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/fcv_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            android:orientation="horizontal"
+                            app:layout_constraintStart_toStartOf="@+id/cl_rv"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/iv_line2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_image"
+                    android:src="@drawable/ic_line_3"/>
+
+                <EditText
+                    android:id="@+id/et_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto"
+                    android:padding="20dp"
+                    android:hint="@string/item_title"
+                    android:textColor="@color/carrot_and_black2"
+                    android:textFontWeight="500"
+                    android:textSize="20sp"
+                    android:background="@null"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_line2" />
+
+                <ImageView
+                    android:id="@+id/iv_line3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/et_title"
+                    android:src="@drawable/ic_line_3"/>
+                <EditText
+                    android:id="@+id/et_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/item_category"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/et_title"
+                    android:padding="20dp"
+                    android:textColor="@color/carrot_and_black2"
+                    android:fontFamily="@font/roboto"
+                    android:textFontWeight="400"
+                    android:background="@null"
+                    android:textSize="20sp"/>
+                <ImageView
+                    android:id="@+id/iv_line4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/et_category"
+                    android:src="@drawable/ic_line_3"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/cl_money"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/et_category">
+
+                    <TextView
+                        android:id="@+id/tv_won"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto"
+                        android:paddingVertical="20dp"
+                        android:paddingStart="20dp"
+                        android:text="@string/item_won"
+                        android:textColor="@color/carrot_and_squaregray"
+                        android:textFontWeight="400"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/et_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:fontFamily="@font/roboto"
+                        android:hint="@string/item_money"
+                        android:textColor="@color/carrot_and_black2"
+                        android:textFontWeight="400"
+                        android:textSize="20sp"
+                        android:background="@null"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/tv_won"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_sug_money"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="14dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/item_sug_money"
+                        android:textColor="@color/carrot_and_squaregray"
+                        android:textFontWeight="400"
+                        android:textSize="20sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/ic_and_btn_checkkk"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_sug_money"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/iv_line5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/cl_money"
+                    android:src="@drawable/ic_line_3"/>
+                <EditText
+                    android:id="@+id/et_write_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/cl_money"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:fontFamily="@font/roboto"
+                    android:textColor="@color/carrot_and_black2"
+                    android:padding="20dp"
+                    android:textFontWeight="500"
+                    android:textSize="20sp"
+                    android:background="@null"
+                    android:hint="@string/item_write"/>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sc_create"
+            android:layout_marginStart="14dp"
+            app:layout_constraintEnd_toEndOf="parent">
+            <ImageButton
+                android:id="@+id/iv_word"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/ic_and_icon_word"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintWidth_percent="0.08"/>
+            <TextView
+                android:id="@+id/tv_write_often"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/iv_word"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/roboto"
+                android:layout_marginStart="2dp"
+                android:textColor="@color/carrot_and_black"
+                android:paddingVertical="20dp"
+                android:textFontWeight="500"
+                android:textSize="17sp"
+                android:text="@string/item_word"/>
+
+            <ImageButton
+                android:id="@+id/iv_town"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/ic_and_icon_range"
+                app:layout_constraintStart_toEndOf="@+id/tv_write_often"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="1:1"
+                android:layout_marginStart="21dp"
+                app:layout_constraintWidth_percent="0.08"/>
+            <TextView
+                android:id="@+id/tv_town"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/iv_town"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/roboto"
+                android:layout_marginStart="2dp"
+                android:textColor="@color/carrot_and_black"
+                android:paddingVertical="20dp"
+                android:textFontWeight="500"
+                android:textSize="17sp"
+                android:text="@string/item_town"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
