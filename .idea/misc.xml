@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/drawable/ic_and_icon_x.xml" value="0.1925" />
         <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/drawable/ic_line_3.xml" value="0.183" />
+        <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/drawable/rectangle_6.xml" value="0.1385" />
         <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/drawable/selector_radio.xml" value="0.1835" />
+        <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/drawable/shape_rectangle_6.xml" value="0.1095" />
         <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/font/roboto.xml" value="0.240625" />
-        <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/layout/activity_create.xml" value="0.22" />
+        <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/layout/activity_create.xml" value="0.16666666666666666" />
         <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/layout/activity_home.xml" value="0.35" />
-        <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/layout/item_image_list.xml" value="0.7333333333333334" />
+        <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/layout/activity_read.xml" value="0.35" />
+        <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/layout/item_image_list.xml" value="1.0" />
         <entry key="..\:/github/CarrotIsDelicious-AOS/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.188" />
       </map>
     </option>
