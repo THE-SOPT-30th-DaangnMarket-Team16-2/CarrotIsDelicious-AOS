@@ -11,14 +11,14 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        initAdapter()
+        //initAdapter()
     }
 
     private fun initAdapter(){
         binding.rvImage.adapter = createImageAdapter
         createImageAdapter.imageList.addAll(
             listOf(
-                ImageData("")
+                ImageData("R.drawable.ic_launcher_foreground")
             )
         )
         createImageAdapter.notifyDataSetChanged()
