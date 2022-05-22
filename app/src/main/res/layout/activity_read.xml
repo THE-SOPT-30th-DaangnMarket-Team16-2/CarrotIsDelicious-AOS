@@ -12,5 +12,430 @@
         android:layout_height="match_parent"
         tools:context=".ui.read.ReadActivity">
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_read_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/carrot_and_white"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/btn_read_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_back_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btn_read_home"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_home_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btn_read_back"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btn_read_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_menu_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btn_read_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="1dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_share_btn"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_read_menu"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ScrollView
+            android:id="@+id/sv_read_content"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/layout_read_bottom"
+            app:layout_constraintTop_toBottomOf="@+id/layout_read_toolbar"
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_read_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/vp_read_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="276dp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/iv_read_profile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="21dp"
+                    android:background="@color/carrot_and_orange2"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vp_read_image" />
+
+                <TextView
+                    android:id="@+id/tv_read_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="4dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:includeFontPadding="false"
+                    android:text="Usssj"
+                    android:textColor="@color/carrot_and_black2"
+                    android:textSize="14sp"
+                    app:layout_constraintBottom_toTopOf="@id/tv_read_address"
+                    app:layout_constraintStart_toEndOf="@+id/iv_read_profile"
+                    app:layout_constraintTop_toTopOf="@id/iv_read_profile"
+                    app:layout_constraintVertical_chainStyle="packed" />
+
+                <TextView
+                    android:id="@+id/tv_read_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:includeFontPadding="false"
+                    android:text="개봉동"
+                    android:textColor="@color/carrot_and_black2"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_read_profile"
+                    app:layout_constraintStart_toEndOf="@+id/iv_read_profile"
+                    app:layout_constraintTop_toBottomOf="@id/tv_read_name" />
+
+                <TextView
+                    android:id="@+id/tv_read_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:includeFontPadding="false"
+                    android:text="36.5ºC"
+                    android:textColor="@color/carrot_and_blue"
+                    android:textSize="15sp"
+                    app:layout_constraintBottom_toTopOf="@id/iv_read_manner_bar"
+                    app:layout_constraintEnd_toEndOf="@id/iv_read_manner_bar" />
+
+                <ImageView
+                    android:id="@+id/iv_read_manner_bar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="3dp"
+                    android:background="@drawable/ic_manner_bar"
+                    app:layout_constraintBottom_toBottomOf="@id/iv_read_manner_icon"
+                    app:layout_constraintEnd_toStartOf="@id/iv_read_manner_icon" />
+
+                <ImageView
+                    android:id="@+id/iv_read_manner_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="15dp"
+                    android:background="@drawable/ic_manner_smile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/vp_read_image" />
+
+                <TextView
+                    android:id="@+id/tv_read_manner_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginBottom="23dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:includeFontPadding="false"
+                    android:text="매너온도"
+                    android:textColor="@color/carrot_and_darkgray"
+                    android:textSize="11sp"
+                    app:layout_constraintBottom_toTopOf="@id/view_read_divider1"
+                    app:layout_constraintEnd_toEndOf="parent" />
+
+                <View
+                    android:id="@+id/view_read_underline1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:background="@color/carrot_and_squaregray"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_read_manner_temperature"
+                    app:layout_constraintEnd_toEndOf="@id/tv_read_manner_temperature"
+                    app:layout_constraintStart_toStartOf="@id/tv_read_manner_temperature" />
+
+                <View
+                    android:id="@+id/view_read_divider1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="14dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@color/carrot_and_linegray"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/iv_read_profile" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_read_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="21dp"
+                    android:background="@drawable/shape_read_state_btn"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/view_read_divider1">
+
+                    <TextView
+                        android:id="@+id/tv_read_state"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="11dp"
+                        android:layout_marginStart="14dp"
+                        android:fontFamily="@font/roboto_semi_bold"
+                        android:includeFontPadding="false"
+                        android:text="판매중"
+                        android:textColor="@color/carrot_and_black2"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_read_state_down"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginEnd="17dp"
+                        android:src="@drawable/ic_arrow_down"
+                        app:layout_constraintBottom_toBottomOf="@id/tv_read_state"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/tv_read_state"
+                        app:layout_constraintTop_toTopOf="@id/tv_read_state" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_read_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/roboto_semi_bold"
+                    android:includeFontPadding="false"
+                    android:text="최태성 한능검 심화 기출 500제"
+                    android:textColor="@color/carrot_and_black2"
+                    android:textSize="22sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/layout_read_state" />
+
+                <TextView
+                    android:id="@+id/tv_read_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:includeFontPadding="false"
+                    android:text="도서/티켓/음반"
+                    android:textColor="@color/carrot_and_darkgray"
+                    android:textSize="16sp"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_read_title" />
+
+                <TextView
+                    android:id="@+id/tv_read_dot"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="3dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:includeFontPadding="false"
+                    android:text="·"
+                    android:textColor="@color/carrot_and_darkgray"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_read_category"
+                    app:layout_constraintStart_toEndOf="@id/tv_read_category"
+                    app:layout_constraintTop_toTopOf="@id/tv_read_category" />
+
+                <TextView
+                    android:id="@+id/tv_read_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:includeFontPadding="false"
+                    android:text="방금 전"
+                    android:textColor="@color/carrot_and_darkgray"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_read_category"
+                    app:layout_constraintStart_toEndOf="@+id/tv_read_dot"
+                    app:layout_constraintTop_toTopOf="@id/tv_read_category" />
+
+                <View
+                    android:id="@+id/view_read_underline2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@color/carrot_and_darkgray"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_read_category"
+                    app:layout_constraintEnd_toEndOf="@id/tv_read_category"
+                    app:layout_constraintStart_toStartOf="@id/tv_read_category" />
+
+                <TextView
+                    android:id="@+id/tv_read_content"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="29dp"
+                    android:layout_marginEnd="15dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:includeFontPadding="false"
+                    android:text="새책입니다"
+                    android:textColor="@color/carrot_and_black2"
+                    android:textSize="20sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_read_category" />
+
+                <TextView
+                    android:id="@+id/tv_read_views"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginTop="38dp"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:includeFontPadding="false"
+                    android:text="조회 "
+                    android:textColor="@color/carrot_and_darkgray"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_read_views_count"
+                    app:layout_constraintHorizontal_chainStyle="packed"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_read_content" />
+
+                <TextView
+                    android:id="@+id/tv_read_views_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_medium"
+                    android:includeFontPadding="false"
+                    android:text="1"
+                    android:textColor="@color/carrot_and_darkgray"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_read_views"
+                    app:layout_constraintStart_toEndOf="@+id/tv_read_views"
+                    app:layout_constraintTop_toTopOf="@+id/tv_read_views" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </ScrollView>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_read_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <View
+                android:id="@+id/view_read_divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/carrot_and_linegray"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btn_read_heart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="3dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_heart"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_read_divider2" />
+
+            <View
+                android:id="@+id/view_read_divider3"
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="4dp"
+                android:background="@color/carrot_and_linegray"
+                app:layout_constraintBottom_toBottomOf="@id/btn_read_heart"
+                app:layout_constraintStart_toEndOf="@id/btn_read_heart"
+                app:layout_constraintTop_toTopOf="@+id/btn_read_heart" />
+
+            <TextView
+                android:id="@+id/tv_read_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/roboto_bold"
+                android:includeFontPadding="false"
+                android:text="16,000원"
+                android:textColor="@color/carrot_and_black2"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/view_read_divider3"
+                app:layout_constraintTop_toBottomOf="@id/view_read_divider2" />
+
+            <TextView
+                android:id="@+id/tv_read_negotiation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/roboto_medium"
+                android:includeFontPadding="false"
+                android:text="가격 제안 불가"
+                android:textColor="@color/carrot_and_darkgray"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="@+id/view_read_divider3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_read_price" />
+
+            <Button
+                android:id="@+id/btn_read_chat_list"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginTop="9dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginBottom="11dp"
+                android:background="@drawable/shape_read_chat_list_btn"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="12dp"
+                android:stateListAnimator="@null"
+                android:text="@string/read_chat_list"
+                android:textColor="@color/carrot_and_white"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/view_read_divider2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
