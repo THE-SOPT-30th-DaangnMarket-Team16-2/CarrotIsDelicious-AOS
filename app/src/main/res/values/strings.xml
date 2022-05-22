@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">CarrotIsDelicious</string>
+
+    <!-- CreateActivity -->
     <string name="item_title">제목</string>
     <string name="item_deal_write">중고거래 글쓰기</string>
     <string name="item_finish">완료</string>
@@ -10,4 +12,7 @@
     <string name="item_write">게시글을 작성해주세요.</string>
     <string name="item_word">자주 쓰는 문구</string>
     <string name="item_town">보여줄 동네 설정</string>
+
+    <!-- ReadActivity -->
+    <string name="read_chat_list">채팅 목록 보기</string>
 </resources>
