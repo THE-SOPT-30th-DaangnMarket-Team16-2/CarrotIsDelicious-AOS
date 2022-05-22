@@ -2,23 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_home"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/selector_home_bnv_home"
         android:title="@string/home_menu_home"/>
     <item
         android:id="@+id/menu_town"
-        android:icon="@drawable/ic_town"
+        android:icon="@drawable/selector_home_bnv_town"
         android:title="@string/home_menu_town"/>
     <item
         android:id="@+id/menu_myplace"
-        android:icon="@drawable/ic_myplace"
+        android:icon="@drawable/selector_home_bnv_myplace"
         android:title="@string/home_menu_myplace"/>
 
     <item
         android:id="@+id/menu_chat"
-        android:icon="@drawable/ic_chat"
+        android:icon="@drawable/selector_home_bnv_chat"
         android:title="@string/home_menu_chat"/>
     <item
         android:id="@+id/menu_my"
-        android:icon="@drawable/ic_my"
+        android:icon="@drawable/selector_home_bnv_my"
         android:title="@string/home_menu_my"/>
 </menu>
