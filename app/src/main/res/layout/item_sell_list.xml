@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="sellData"
+            type="org.sopt.carrot16_2.model.SellData" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="128dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="19dp">
+        <ImageView
+            android:id="@+id/iv_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/image15"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/iv_picture"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="12dp"
+            android:text="@{sellData.title}"
+            android:maxLines="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="17sp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/carrot_and_black2"
+            android:textFontWeight="500"/>
+        <TextView
+            android:id="@+id/tv_place"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            android:layout_marginTop="6dp"
+            android:textSize="14sp"
+            android:textColor="@color/carrot_and_darkgray"
+            android:text="@{sellData.place}"
+            android:fontFamily="@font/roboto"
+            android:textFontWeight="500"/>
+
+        <TextView
+            android:id="@+id/tv_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tv_place"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            android:layout_marginTop="6dp"
+            android:textSize="14sp"
+            android:textColor="@color/carrot_and_darkgray"
+            android:layout_marginStart="3dp"
+            android:text="ㆍ"
+            android:fontFamily="@font/roboto"
+            android:textFontWeight="500"/>
+        <TextView
+        android:id="@+id/tv_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/tv_dot"
+        app:layout_constraintTop_toBottomOf="@id/tv_title"
+        android:layout_marginTop="6dp"
+        android:textSize="14sp"
+        android:textColor="@color/carrot_and_darkgray"
+        android:layout_marginStart="3dp"
+        android:text="@{sellData.second}"
+        android:fontFamily="@font/roboto"
+        android:textFontWeight="500"/>
+
+        <TextView
+            android:id="@+id/tv_second_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tv_second"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            android:layout_marginTop="6dp"
+            android:textSize="14sp"
+            android:textColor="@color/carrot_and_darkgray"
+            android:text="초 전"
+            android:fontFamily="@font/roboto"
+            android:textFontWeight="500"/>
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_place"
+            android:textColor="@color/carrot_and_black2"
+            android:text="@{sellData.price}"
+            android:textSize="17sp"
+            android:fontFamily="@font/roboto"
+            android:layout_marginTop="6dp"
+            android:textFontWeight="400"/>
+        <TextView
+            android:id="@+id/tv_price2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tv_price"
+            app:layout_constraintTop_toBottomOf="@id/tv_place"
+            android:textColor="@color/carrot_and_black2"
+            android:text="원"
+            android:textSize="17sp"
+            android:fontFamily="@font/roboto"
+            android:layout_marginTop="6dp"
+            android:textFontWeight="400"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
