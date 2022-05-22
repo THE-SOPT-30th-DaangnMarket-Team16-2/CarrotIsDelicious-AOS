@@ -1,10 +1,12 @@
 package org.sopt.carrot16_2.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import org.sopt.carrot16_2.R
 import org.sopt.carrot16_2.databinding.ActivityHomeBinding
 import org.sopt.carrot16_2.model.SellData
 import org.sopt.carrot16_2.ui.base.BaseActivity
+import org.sopt.carrot16_2.ui.create.CreateActivity
 
 class  HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     private lateinit var sellAdapter: SellAdapter
@@ -12,6 +14,7 @@ class  HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) 
         super.onCreate(savedInstanceState)
 
         initAdapter()
+        initWriteBtnClickListener()
     }
 
     private fun initAdapter(){
@@ -26,5 +29,12 @@ class  HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) 
                 SellData("여름 자켓 판매", "개봉동","13","16,000")
             )
         )
+       
+    }
+
+    private fun initWriteBtnClickListener() {
+        binding.btnHomeWrite.setOnClickListener {
+            startActivity(Intent(this, CreateActivity::class.java))
+        }
     }
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tv_state_selling"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:includeFontPadding="true"
+            android:text="@string/state_selling"
+            android:textColor="@color/carrot_and_black2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_state_divider1"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/carrot_and_linegray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_state_selling" />
+
+        <TextView
+            android:id="@+id/tv_state_completed"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:includeFontPadding="true"
+            android:text="@string/state_completed"
+            android:textColor="@color/carrot_and_black2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_state_divider1" />
+
+        <View
+            android:id="@+id/view_state_divider2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:background="@color/carrot_and_linegray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_state_completed" />
+
+        <TextView
+            android:id="@+id/tv_state_reserving"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:fontFamily="@font/roboto_medium"
+            android:gravity="center"
+            android:includeFontPadding="true"
+            android:text="@string/state_reserving"
+            android:textColor="@color/carrot_and_black2"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_state_divider2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
