@@ -1,11 +1,13 @@
 package org.sopt.carrot16_2.ui.create
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.core.widget.addTextChangedListener
 import org.sopt.carrot16_2.R
 import org.sopt.carrot16_2.databinding.ActivityCreateBinding
 import org.sopt.carrot16_2.model.ImageData
 import org.sopt.carrot16_2.ui.base.BaseActivity
+import org.sopt.carrot16_2.ui.read.ReadActivity
 
 class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_create) {
     private lateinit var createImageAdapter: CreateImageAdapter
@@ -14,7 +16,7 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
 
         initAdapter()
         changeEvent()
-
+        initFinishBtnClickListener()
     }
 
     private fun initAdapter(){
@@ -43,6 +45,12 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
         }
         binding.btnRadio.setOnClickListener{
             binding.btnRadio?.isSelected = binding.btnRadio.isSelected==false
+        }
+    }
+
+    private fun initFinishBtnClickListener() {
+        binding.tvFinish.setOnClickListener {
+            startActivity(Intent(this, ReadActivity::class.java))
         }
     }
 
