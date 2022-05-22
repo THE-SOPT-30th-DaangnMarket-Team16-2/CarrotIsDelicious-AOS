@@ -9,6 +9,7 @@
 ### 재훈 - Read Activity
 
 ## 클-디 세미나 시연 영상
+![device-2022-05-22-231811](https://user-images.githubusercontent.com/81394850/169700110-db8ec7cb-e8cc-4a9f-8950-51bf4e6f6137.gif)
 
 
 ## 클-서 세미나 시연 영상
