@@ -26,9 +26,8 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
         readViewPagerAdapter = ReadViewPagerAdapter(urlList)
         binding.vpReadImage.adapter = readViewPagerAdapter
         binding.vpReadImage.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        binding.tlReadIndicator.setViewPager2(binding.vpReadImage)
 
-        TabLayoutMediator(binding.tlReadIndicator, binding.vpReadImage) { tab, position ->
-        }.attach()
     }
 
 
