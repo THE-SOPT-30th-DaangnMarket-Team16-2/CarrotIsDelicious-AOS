@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="readViewModel"
+            type="org.sopt.carrot16_2.ui.read.viewmodel.ReadViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -84,8 +87,8 @@
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/vp_read_image"
                     android:layout_width="match_parent"
-                    android:background="@color/black"
                     android:layout_height="276dp"
+                    android:background="@color/black"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
@@ -95,9 +98,9 @@
                     android:layout_marginBottom="38dp"
                     app:dotsClickable="false"
                     app:dotsColor="@color/carrot_and_white"
-                    app:dotsStrokeColor="@color/carrot_and_circlegray"
                     app:dotsSize="12dp"
                     app:dotsSpacing="5dp"
+                    app:dotsStrokeColor="@color/carrot_and_circlegray"
                     app:layout_constraintBottom_toBottomOf="@id/vp_read_image"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
