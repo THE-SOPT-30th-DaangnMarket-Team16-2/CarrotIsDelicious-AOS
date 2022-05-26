@@ -26,4 +26,9 @@
     <string name="state_selling">판매중</string>
     <string name="state_completed">거래완료</string>
     <string name="state_reserving">예약중</string>
+    <string name="read_temperature">36.5ºC</string>
+    <string name="read_manner_temperature">매너온도</string>
+    <string name="read_dot">·</string>
+    <string name="read_views">조회</string>
+    <string name="read_price_won">원</string>
 </resources>
