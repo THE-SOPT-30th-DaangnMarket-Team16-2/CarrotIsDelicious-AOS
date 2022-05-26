@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="createViewModel"
+            type="org.sopt.carrot16_2.ui.create.viewmodel.CreateViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,10 +51,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="14dp"
-                android:enabled="@{(etTitle.text.length() == 0 || etCategory.text.length() == 0 || etMoney.text.length() == 0 || etWriteText.text.length() == 0) ? false : true}"
+                android:enabled="@{(createViewModel.content.length() == 0 || createViewModel.category.length() == 0 || createViewModel.money.length() == 0 || createViewModel.content.length() == 0) ? false : true}"
                 android:fontFamily="@font/roboto"
                 android:text="@string/item_finish"
-                android:textColor="@{(etTitle.text.length() == 0 || etCategory.text.length() == 0 || etMoney.text.length() == 0 || etWriteText.text.length() == 0) ? @color/carrot_and_squaregray : @color/carrot_and_orange}"
+                android:textColor="@{(createViewModel.content.length() == 0 || createViewModel.category.length() == 0 || createViewModel.money.length() == 0 || createViewModel.content.length() == 0) ? @color/carrot_and_squaregray : @color/carrot_and_orange}"
                 android:textFontWeight="600"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -178,6 +181,7 @@
                     android:fontFamily="@font/roboto"
                     android:hint="@string/item_title"
                     android:padding="20dp"
+                    android:text="@={createViewModel.title}"
                     android:textColor="@color/carrot_and_black2"
                     android:textFontWeight="500"
                     android:textSize="20sp"
@@ -198,6 +202,7 @@
                     android:fontFamily="@font/roboto"
                     android:hint="@string/item_category"
                     android:padding="20dp"
+                    android:text="@={createViewModel.category}"
                     android:textColor="@color/carrot_and_black2"
                     android:textFontWeight="400"
                     android:textSize="20sp"
@@ -225,7 +230,7 @@
                         android:paddingVertical="20dp"
                         android:paddingStart="20dp"
                         android:text="@string/item_won"
-                        android:textColor="@{etMoney.text.length() == 0 ? @color/carrot_and_squaregray : @color/carrot_and_black2}"
+                        android:textColor="@{createViewModel.money.length() == 0 ? @color/carrot_and_squaregray : @color/carrot_and_black2}"
                         android:textFontWeight="400"
                         android:textSize="20sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -240,6 +245,8 @@
                         android:background="@null"
                         android:fontFamily="@font/roboto"
                         android:hint="@string/item_money"
+                        android:inputType="number"
+                        android:text="@={createViewModel.money}"
                         android:textColor="@color/carrot_and_black2"
                         android:textFontWeight="400"
                         android:textSize="20sp"
@@ -290,6 +297,7 @@
                     android:fontFamily="@font/roboto"
                     android:hint="@string/item_write"
                     android:padding="20dp"
+                    android:text="@={createViewModel.content}"
                     android:textColor="@color/carrot_and_black2"
                     android:textFontWeight="500"
                     android:textSize="20sp"
