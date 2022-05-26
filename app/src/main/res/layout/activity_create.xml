@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="create"
+            type="org.sopt.carrot16_2.viewModel.CreateViewModel" />
 
     </data>
 
@@ -176,6 +179,7 @@
                     android:layout_height="wrap_content"
                     android:background="@null"
                     android:fontFamily="@font/roboto"
+                    android:text="@={create.title}"
                     android:hint="@string/item_title"
                     android:padding="20dp"
                     android:textColor="@color/carrot_and_black2"
@@ -198,10 +202,12 @@
                     android:fontFamily="@font/roboto"
                     android:hint="@string/item_category"
                     android:padding="20dp"
+                    android:text="@={create.category}"
                     android:textColor="@color/carrot_and_black2"
                     android:textFontWeight="400"
                     android:textSize="20sp"
-                    app:layout_constraintTop_toBottomOf="@id/et_title" />
+                    app:layout_constraintTop_toBottomOf="@id/et_title"
+                    tools:layout_editor_absoluteX="0dp" />
 
                 <View
                     android:id="@+id/iv_line4"
@@ -240,6 +246,7 @@
                         android:background="@null"
                         android:fontFamily="@font/roboto"
                         android:hint="@string/item_money"
+                        android:text="@={create.money}"
                         android:textColor="@color/carrot_and_black2"
                         android:textFontWeight="400"
                         android:textSize="20sp"
@@ -289,11 +296,13 @@
                     android:background="@null"
                     android:fontFamily="@font/roboto"
                     android:hint="@string/item_write"
+                    android:text="@={create.post}"
                     android:padding="20dp"
                     android:textColor="@color/carrot_and_black2"
                     android:textFontWeight="500"
                     android:textSize="20sp"
-                    app:layout_constraintTop_toBottomOf="@id/cl_money" />
+                    app:layout_constraintTop_toBottomOf="@id/cl_money"
+                    tools:layout_editor_absoluteX="-16dp" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
 

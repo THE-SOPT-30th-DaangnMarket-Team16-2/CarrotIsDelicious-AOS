@@ -4,22 +4,33 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.activity.viewModels
 import androidx.core.widget.addTextChangedListener
+import androidx.lifecycle.Observer
 import org.sopt.carrot16_2.R
 import org.sopt.carrot16_2.databinding.ActivityCreateBinding
 import org.sopt.carrot16_2.model.ImageData
 import org.sopt.carrot16_2.ui.base.BaseActivity
 import org.sopt.carrot16_2.ui.read.ReadActivity
+import org.sopt.carrot16_2.viewModel.CreateViewModel
 
 class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_create) {
-    private lateinit var createImageAdapter: CreateImageAdapter
+    private lateinit var createImageAdapter : CreateImageAdapter
     private var radioButtonState = false
+    private val viewModel by viewModels<CreateViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        binding.apply{
+            create = viewModel
+            lifecycleOwner = this@CreateActivity
+        }
+
 
         initAdapter()
         changeEvent()
         initFinishBtnClickListener()
+        //completeEvent()
     }
 
     private fun initAdapter(){
@@ -71,5 +82,34 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
             startActivity(Intent(this, ReadActivity::class.java))
         }
     }
+
+    /*private fun completeEvent(){
+        //관찰해서 데이터 변경되면 호출됨
+        viewModel.title.observe(this@CreateActivity,Observer{
+            viewModel.imageComplete()
+        })
+        viewModel.category.observe(this@CreateActivity,Observer{
+            viewModel.imageComplete()
+        })
+        viewModel.money.observe(this@CreateActivity,Observer{
+            viewModel.imageComplete()
+        })
+        viewModel.post.observe(this@CreateActivity,Observer{
+            viewModel.imageComplete()
+        })
+
+        viewModel.complete.observe(this@CreateActivity, Observer{ it ->
+            if(it){
+                binding.tvFinish.isSelected= true
+                binding.tvFinish.isEnabled = true
+                binding.tvFinish.setTextColor(getColor(R.color.carrot_and_orange))
+            }else{
+                binding.tvFinish.isSelected= false
+                binding.tvFinish.isEnabled = false
+                binding.tvFinish.setTextColor(getColor(R.color.carrot_and_squaregray))
+            }
+        })
+
+    }*/
 
 }
