@@ -30,6 +30,7 @@ class SellAdapter : RecyclerView.Adapter<SellAdapter.SellViewHolder>() {
 
     override fun onBindViewHolder(holder: SellViewHolder, position: Int) {
         holder.onBind(dataList[position])
+
     }
 
     override fun getItemCount(): Int = dataList.size
