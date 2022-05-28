@@ -1,5 +1,6 @@
 package org.sopt.carrot16_2.data.remote
 
+import org.sopt.carrot16_2.data.remote.service.ReadService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -12,5 +13,5 @@ object RetrofitBuilder {
         .build()
 
     // val sampleService: SampleService = retrofit.create(SampleService::class.java)
-
+    val readService: ReadService = retrofit.create(ReadService::class.java)
 }

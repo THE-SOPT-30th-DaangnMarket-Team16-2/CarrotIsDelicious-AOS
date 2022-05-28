@@ -1,18 +1,23 @@
 package org.sopt.carrot16_2.ui.read
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import org.sopt.carrot16_2.R
 import org.sopt.carrot16_2.databinding.BottomSheetStateBinding
+import org.sopt.carrot16_2.ui.read.viewmodel.ReadViewModel
+import org.sopt.carrot16_2.ui.read.viewmodel.ReadViewModel.Companion.STATE_COMPLETED
+import org.sopt.carrot16_2.ui.read.viewmodel.ReadViewModel.Companion.STATE_RESERVING
+import org.sopt.carrot16_2.ui.read.viewmodel.ReadViewModel.Companion.STATE_SELLING
 
 class StateBottomSheet : BottomSheetDialogFragment() {
     private var _binding: BottomSheetStateBinding? = null
     val binding get() = _binding ?: error(getString(R.string.binding_error))
+    private val readViewModel by activityViewModels<ReadViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,6 +43,7 @@ class StateBottomSheet : BottomSheetDialogFragment() {
     private fun initSellingClickListener() {
         binding.tvStateSelling.setOnClickListener {
             // 서버 통신
+            readViewModel.initState(STATE_SELLING)
             dismiss()
         }
     }
@@ -45,6 +51,7 @@ class StateBottomSheet : BottomSheetDialogFragment() {
     private fun initCompletedClickListener() {
         binding.tvStateCompleted.setOnClickListener {
             // 서버 통신
+            readViewModel.initState(STATE_COMPLETED)
             dismiss()
         }
     }
@@ -52,6 +59,7 @@ class StateBottomSheet : BottomSheetDialogFragment() {
     private fun initReservingClickListener() {
         binding.tvStateReserving.setOnClickListener {
             // 서버 통신
+            readViewModel.initState(STATE_RESERVING)
             dismiss()
         }
     }

@@ -13,7 +13,7 @@
         android:theme="@style/Theme.CarrotIsDelicious">
         <activity
             android:name=".ui.read.ReadActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ui.create.CreateActivity"
             android:exported="true">
