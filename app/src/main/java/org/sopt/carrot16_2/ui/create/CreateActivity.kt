@@ -89,7 +89,7 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
         viewModel.money.observe(this@CreateActivity,Observer{
             viewModel.imageComplete()
         })
-        viewModel.post.observe(this@CreateActivity,Observer{
+        viewModel.content.observe(this@CreateActivity,Observer{
             viewModel.imageComplete()
         })
 
