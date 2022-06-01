@@ -6,7 +6,7 @@
     <data>
         <variable
             name="create"
-            type="org.sopt.carrot16_2.viewModel.CreateViewModel" />
+            type="org.sopt.carrot16_2.ui.create.viewmodel.CreateViewModel" />
 
         <variable
             name="createViewModel"

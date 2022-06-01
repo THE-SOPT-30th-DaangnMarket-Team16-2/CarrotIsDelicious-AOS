@@ -2,13 +2,19 @@ package org.sopt.carrot16_2.ui.create
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import org.sopt.carrot16_2.R
+import org.sopt.carrot16_2.data.remote.RetrofitBuilder
+import org.sopt.carrot16_2.data.remote.entity.request.CreateRequest
+import org.sopt.carrot16_2.data.remote.entity.response.CreateResponse
 import org.sopt.carrot16_2.databinding.ActivityCreateBinding
 import org.sopt.carrot16_2.model.ImageData
 import org.sopt.carrot16_2.ui.base.BaseActivity
 import org.sopt.carrot16_2.ui.create.viewmodel.CreateViewModel
 import org.sopt.carrot16_2.ui.read.ReadActivity
+import org.sopt.carrot16_2.util.enqueueUtil
+import retrofit2.Call
 
 class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_create) {
     private lateinit var createImageAdapter : CreateImageAdapter
@@ -72,39 +78,40 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
         }
     }
 
+    //완료 버튼 클릭시 데이터 전송
     private fun initFinishBtnClickListener() {
         binding.tvFinish.setOnClickListener {
-            startActivity(Intent(this, ReadActivity::class.java))
+            val createRequest = CreateRequest(
+                imageCount = createImageAdapter.itemCount,
+                title = binding.etTitle.text.toString(),
+                category = binding.etCategory.text.toString(),
+                price = binding.etMoney.text.toString().toInt(),
+                isPriceSuggestion = binding.btnRadio.isSelected,
+                contents = binding.etWriteText.text.toString()
+            )
+            val call : Call<CreateResponse> = RetrofitBuilder.createService.postCreate(createRequest)
+            call.enqueueUtil(
+                onSuccess = {
+                    val intent = Intent(this@CreateActivity, ReadActivity::class.java).apply {
+                        putExtra("title",createRequest.title)
+                        putExtra("category",createRequest.category)
+                        putExtra("price", createRequest.price)
+                        putExtra("contents",createRequest.contents)
+                        putExtra("isPrice", createRequest.isPriceSuggestion)
+                    }
+                    Toast.makeText(this@CreateActivity, "게시글 업로드 성공",Toast.LENGTH_SHORT).show()
+                    setResult(RESULT_OK,intent)
+                    if (!isFinishing) {
+                        finish()
+                    }
+                },
+                onError = {
+                    Toast.makeText(this@CreateActivity, "게시글 업로드 실패",Toast.LENGTH_SHORT).show()
+                }
+            )
+
         }
     }
 
-    /*private fun completeEvent(){
-        //관찰해서 데이터 변경되면 호출됨
-        viewModel.title.observe(this@CreateActivity,Observer{
-            viewModel.imageComplete()
-        })
-        viewModel.category.observe(this@CreateActivity,Observer{
-            viewModel.imageComplete()
-        })
-        viewModel.money.observe(this@CreateActivity,Observer{
-            viewModel.imageComplete()
-        })
-        viewModel.content.observe(this@CreateActivity,Observer{
-            viewModel.imageComplete()
-        })
-
-        viewModel.complete.observe(this@CreateActivity, Observer{ it ->
-            if(it){
-                binding.tvFinish.isSelected= true
-                binding.tvFinish.isEnabled = true
-                binding.tvFinish.setTextColor(getColor(R.color.carrot_and_orange))
-            }else{
-                binding.tvFinish.isSelected= false
-                binding.tvFinish.isEnabled = false
-                binding.tvFinish.setTextColor(getColor(R.color.carrot_and_squaregray))
-            }
-        })
-
-    }*/
 
 }
