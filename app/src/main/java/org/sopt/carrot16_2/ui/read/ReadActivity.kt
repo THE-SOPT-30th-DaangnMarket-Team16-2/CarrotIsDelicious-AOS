@@ -23,28 +23,6 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
         super.onCreate(savedInstanceState)
         binding.readViewModel = readViewModel
 
-        getCreateActivityResult = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()){
-            result ->
-            if(result.resultCode == RESULT_OK){
-                val getTitle = result.data?.getStringExtra("title")
-                val getCategory = result.data?.getStringExtra("category")
-                val getPrice = result.data?.getStringExtra("price")?.toInt()
-                val getContents = result.data?.getStringExtra("contents")
-                val getIsPrice = result.data?.getStringExtra("isPrice").toBoolean()
-
-                binding.tvReadTitle.text = getTitle
-                binding.tvReadCategory.text = getCategory
-                binding.tvReadContent.text = getContents
-                binding.tvReadPrice.text = getPrice.toString()
-                if(getIsPrice){
-                    binding.tvReadNegotiation.text = R.string.item_no_sug_money.toString()
-                }else{
-                    binding.tvReadNegotiation.text = R.string.item_sug_money.toString()
-                }
-            }
-        }
-
         initReadId()
         initReadItem()
         initViewPagerAdapter()

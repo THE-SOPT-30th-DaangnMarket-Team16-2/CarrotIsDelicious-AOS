@@ -2,6 +2,7 @@ package org.sopt.carrot16_2.ui.create
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import org.sopt.carrot16_2.R
@@ -92,24 +93,19 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
             val call : Call<CreateResponse> = RetrofitBuilder.createService.postCreate(createRequest)
             call.enqueueUtil(
                 onSuccess = {
-                    val intent = Intent(this@CreateActivity, ReadActivity::class.java).apply {
-                        putExtra("title",createRequest.title)
-                        putExtra("category",createRequest.category)
-                        putExtra("price", createRequest.price)
-                        putExtra("contents",createRequest.contents)
-                        putExtra("isPrice", createRequest.isPriceSuggestion)
-                    }
+                    val data = it.data
                     Toast.makeText(this@CreateActivity, "게시글 업로드 성공",Toast.LENGTH_SHORT).show()
-                    setResult(RESULT_OK,intent)
-                    if (!isFinishing) {
-                        finish()
+                    Log.e("dk",createRequest.toString())
+                    val intent = Intent(this@CreateActivity, ReadActivity::class.java).apply {
+                        putExtra("id",data.id)
                     }
+                    startActivity(intent)
+                    finish()
                 },
                 onError = {
                     Toast.makeText(this@CreateActivity, "게시글 업로드 실패",Toast.LENGTH_SHORT).show()
                 }
             )
-
         }
     }
 
