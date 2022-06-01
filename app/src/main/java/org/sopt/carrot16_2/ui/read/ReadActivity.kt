@@ -1,6 +1,9 @@
 package org.sopt.carrot16_2.ui.read
 
+import android.content.Intent
 import android.os.Bundle
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import org.sopt.carrot16_2.R
@@ -14,6 +17,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
     private lateinit var readViewPagerAdapter: ReadViewPagerAdapter
     private val readViewModel by viewModels<ReadViewModel>()
     private var readId by Delegates.notNull<Int>()
+    private lateinit var getCreateActivityResult : ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

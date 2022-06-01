@@ -1,11 +1,12 @@
 package org.sopt.carrot16_2.data.remote
 
+import org.sopt.carrot16_2.data.remote.service.CreateService
 import org.sopt.carrot16_2.data.remote.service.ReadService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitBuilder {
-    private const val BASE_URL = "https://83008f6f-c9e8-4bb3-a1f8-db102f7e9b13.mock.pstmn.io"
+    private const val BASE_URL = "http://13.125.157.62:8000/"
 
     private val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)
@@ -14,4 +15,5 @@ object RetrofitBuilder {
 
     // val sampleService: SampleService = retrofit.create(SampleService::class.java)
     val readService: ReadService = retrofit.create(ReadService::class.java)
+    val createService : CreateService = retrofit.create(CreateService::class.java)
 }

@@ -12,15 +12,6 @@ class CreateViewModel : ViewModel() {
 
     val complete : MutableLiveData<Boolean> get() = _complete
 
-    /* fun imageComplete() {
-          when {
-              !title.value.isNullOrBlank() && !category.value.isNullOrBlank() && !money.value.isNullOrBlank() && !post.value.isNullOrBlank() -> {
-                  _complete.value = true
-              }
-              else -> {
-                  _complete.value = false
-              }
-          }
-      }*/
+
 
 }
