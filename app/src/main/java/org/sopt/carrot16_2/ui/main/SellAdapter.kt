@@ -5,15 +5,17 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import org.sopt.carrot16_2.R
+import org.sopt.carrot16_2.data.remote.entity.response.HomeResponse
 import org.sopt.carrot16_2.databinding.ItemSellListBinding
-import org.sopt.carrot16_2.model.SellData
 
 class SellAdapter : RecyclerView.Adapter<SellAdapter.SellViewHolder>() {
-    val dataList = mutableListOf<SellData>()
+    val dataList = mutableListOf<HomeResponse.Data>()
+
     class SellViewHolder(private val binding : ItemSellListBinding) :
     RecyclerView.ViewHolder(binding.root){
-        fun onBind(sell : SellData){
-            binding.sellData = sell
+        fun onBind(sell : HomeResponse.Data){
+            binding.homeResponseData = sell
+            binding.tvPrice.text = sell.price.toString()
         }
 
     }

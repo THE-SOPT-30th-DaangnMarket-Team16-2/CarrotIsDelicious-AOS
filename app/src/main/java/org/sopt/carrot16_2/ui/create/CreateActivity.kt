@@ -94,7 +94,7 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
             call.enqueueUtil(
                 onSuccess = {
                     val data = it.data
-                    Toast.makeText(this@CreateActivity, "게시글 업로드 성공",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this@CreateActivity, "상품 등록 성공",Toast.LENGTH_SHORT).show()
                     Log.e("dk",createRequest.toString())
                     val intent = Intent(this@CreateActivity, ReadActivity::class.java).apply {
                         putExtra("id",data.id)
@@ -103,7 +103,11 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
                     finish()
                 },
                 onError = {
-                    Toast.makeText(this@CreateActivity, "게시글 업로드 실패",Toast.LENGTH_SHORT).show()
+                    when(it){
+                        404 -> Toast.makeText(this@CreateActivity, "요청값을 처리할 수 없습니다",Toast.LENGTH_SHORT).show()
+                        500 -> Toast.makeText(this@CreateActivity, "internal server error",Toast.LENGTH_SHORT).show()
+                    }
+
                 }
             )
         }

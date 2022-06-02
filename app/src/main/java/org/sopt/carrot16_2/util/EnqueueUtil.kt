@@ -13,11 +13,11 @@ fun <ResponseType> Call<ResponseType>.enqueueUtil(
         override fun onResponse(call: Call<ResponseType>, response: Response<ResponseType>) {
             if(response.isSuccessful){
                 onSuccess.invoke(response.body() ?: return)
-                Log.e("rrrrrrrrrrrr",response.code().toString())
-                Log.e("rrrrrrrrrrrr",response.body().toString())
+                Log.d("status",response.code().toString())
+                Log.d("responseBody",response.body().toString())
             }else{
                 onError?.invoke(response.code())
-                Log.e("rrrrrrrrrrrr",response.code().toString())
+                Log.d("responseBody",response.code().toString())
             }
         }
 
