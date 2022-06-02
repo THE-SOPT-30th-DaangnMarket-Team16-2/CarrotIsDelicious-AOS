@@ -11,7 +11,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="128dp"
         android:layout_marginTop="19dp"
         android:layout_marginBottom="19dp">
         <ImageView
@@ -75,18 +74,6 @@
         android:fontFamily="@font/roboto"
         android:textFontWeight="500"/>
 
-        <TextView
-            android:id="@+id/tv_second_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/tv_second"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
-            android:layout_marginTop="6dp"
-            android:textSize="14sp"
-            android:textColor="@color/carrot_and_darkgray"
-            android:text="초 전"
-            android:fontFamily="@font/roboto"
-            android:textFontWeight="500"/>
 
         <TextView
             android:id="@+id/tv_price"
@@ -95,7 +82,7 @@
             app:layout_constraintStart_toStartOf="@+id/tv_title"
             app:layout_constraintTop_toBottomOf="@id/tv_place"
             android:textColor="@color/carrot_and_black2"
-            android:text="1"
+            android:text="@{Integer.toString(homeResponseData.price)}"
             android:textSize="17sp"
             android:fontFamily="@font/roboto"
             android:layout_marginTop="6dp"

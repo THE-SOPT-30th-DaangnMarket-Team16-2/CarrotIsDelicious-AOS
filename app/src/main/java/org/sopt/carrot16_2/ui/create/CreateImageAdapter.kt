@@ -29,7 +29,8 @@ class CreateImageAdapter : RecyclerView.Adapter<CreateImageAdapter.CreateImageVi
     }
 
     override fun onBindViewHolder(holder: CreateImageViewHolder, position: Int) {
-        holder.onBind(imageList[position])
+        var itemPosition = itemCount
+        holder.onBind(imageList[itemPosition-1])
 
     }
 
