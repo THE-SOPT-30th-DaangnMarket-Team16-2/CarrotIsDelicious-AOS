@@ -15,7 +15,7 @@ class SellAdapter : RecyclerView.Adapter<SellAdapter.SellViewHolder>() {
     RecyclerView.ViewHolder(binding.root){
         fun onBind(sell : HomeResponse.Data){
             binding.homeResponseData = sell
-            binding.tvPrice.text = sell.price.toString()
+            //binding.tvPrice.text = sell.price.toString()
         }
 
     }
