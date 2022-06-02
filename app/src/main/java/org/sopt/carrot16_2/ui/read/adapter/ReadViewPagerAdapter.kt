@@ -2,13 +2,15 @@ package org.sopt.carrot16_2.ui.read.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import org.sopt.carrot16_2.databinding.ItemReadVpItemBinding
 
-class ReadViewPagerAdapter(private val imageUrls: List<String>) :
-    RecyclerView.Adapter<ReadViewPagerAdapter.ViewPagerViewHolder>() {
+class ReadViewPagerAdapter :
+    ListAdapter<String, ReadViewPagerAdapter.ViewPagerViewHolder>(readDiffUtil) {
 
     inner class ViewPagerViewHolder(val binding: ItemReadVpItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -28,8 +30,20 @@ class ReadViewPagerAdapter(private val imageUrls: List<String>) :
     }
 
     override fun onBindViewHolder(holder: ViewPagerViewHolder, position: Int) {
-        holder.onBind(imageUrls[position])
+        holder.onBind(getItem(position))
     }
 
-    override fun getItemCount(): Int = imageUrls.size
+    fun updateHabitList(images: List<String>) {
+        submitList(images)
+    }
+
+    companion object {
+        private val readDiffUtil = object : DiffUtil.ItemCallback<String>() {
+            override fun areItemsTheSame(oldItem: String, newItem: String): Boolean =
+                oldItem == newItem
+
+            override fun areContentsTheSame(oldItem: String, newItem: String): Boolean =
+                oldItem.equals(newItem)
+        }
+    }
 }

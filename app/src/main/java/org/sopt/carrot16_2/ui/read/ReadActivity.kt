@@ -1,9 +1,6 @@
 package org.sopt.carrot16_2.ui.read
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.viewpager2.widget.ViewPager2
 import org.sopt.carrot16_2.R
@@ -16,8 +13,7 @@ import kotlin.properties.Delegates
 class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
     private lateinit var readViewPagerAdapter: ReadViewPagerAdapter
     private val readViewModel by viewModels<ReadViewModel>()
-    private var readId by Delegates.notNull<Int>()
-    private lateinit var getCreateActivityResult : ActivityResultLauncher<Intent>
+    private var readId by Delegates.notNull<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +21,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
 
         initReadId()
         initReadItem()
+        initReadItemObserver()
         initViewPagerAdapter()
         initBackBtnClickListener()
         initStateLayoutClickListener()
@@ -32,16 +29,31 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
     }
 
     private fun initReadId() {
-        readId = intent.getIntExtra("readId", -1)
+        readId = intent.getStringExtra("id").toString()
+        readId = "628f3743b32d474b28bba948"
     }
 
     private fun initReadItem() {
         readViewModel.getReadItem(readId)
     }
 
+    private fun initReadItemObserver() {
+        readViewModel.readItem.observe(this) {
+            readViewPagerAdapter.updateHabitList(it.images)
+            binding.readViewModel = readViewModel
+        }
+
+        readViewModel.isLiked.observe(this) {
+            binding.readViewModel = readViewModel
+        }
+
+        readViewModel.state.observe(this) {
+            binding.readViewModel = readViewModel
+        }
+    }
+
     private fun initViewPagerAdapter() {
-        val readImages = readViewModel.readItem.value?.image
-        readViewPagerAdapter = ReadViewPagerAdapter(readImages!!)
+        readViewPagerAdapter = ReadViewPagerAdapter()
         binding.vpReadImage.adapter = readViewPagerAdapter
         binding.vpReadImage.orientation = ViewPager2.ORIENTATION_HORIZONTAL
         binding.tlReadIndicator.setViewPager2(binding.vpReadImage)

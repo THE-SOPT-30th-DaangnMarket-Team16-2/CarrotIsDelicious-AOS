@@ -4,9 +4,11 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 import org.sopt.carrot16_2.data.remote.RetrofitBuilder
+import org.sopt.carrot16_2.data.remote.entity.request.StateRequest
 import org.sopt.carrot16_2.data.remote.entity.response.ReadResponse
-import org.sopt.carrot16_2.data.remote.entity.response.User
 import org.sopt.carrot16_2.data.remote.service.ReadService
 
 class ReadViewModel : ViewModel() {
@@ -15,42 +17,53 @@ class ReadViewModel : ViewModel() {
     private val _readItem = MutableLiveData<ReadResponse>()
     val readItem: LiveData<ReadResponse> = _readItem
 
+    private val _isLiked = MutableLiveData<Boolean>()
+    val isLiked: LiveData<Boolean> = _isLiked
+
+    private val _state = MutableLiveData<Int>()
+    val state: LiveData<Int> = _state
+
     fun initState(state: Int) {
+        _state.value = state
         _readItem.value?.onSale = state
-        Log.d("testttt", readItem.value?.onSale.toString())
+        viewModelScope.launch {
+            kotlin.runCatching {
+                _readItem.value?._id?.let { id ->
+                    readService.setOnSale(StateRequest(id, state))
+                }
+            }.onSuccess {
+                Log.d("testtt", it.toString())
+            }.onFailure {
+                Log.d("testtt", it.toString())
+            }
+        }
     }
 
     fun initHeart() {
+        _isLiked.value = _isLiked.value != true
         _readItem.value?.isLiked = readItem.value?.isLiked != true
-        Log.d("testttt", readItem.value?.isLiked.toString())
+        viewModelScope.launch {
+            kotlin.runCatching {
+                _readItem.value?._id?.let { readService.setLike(it) }
+            }.onSuccess {
+                Log.d("testtt", it.toString())
+            }.onFailure {
+                Log.d("testtt", it.toString())
+            }
+        }
     }
 
-    fun getReadItem(readId: Int) {
-        //test
-        val list: List<String> = listOf(
-            "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png",
-            "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png",
-            "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png"
-        )
-        _readItem.value = ReadResponse(
-            "category",
-            "content",
-            "createdAt",
-            list,
-            true,
-            "가격 제안 가능",
-            0,
-            16000,
-            "title",
-            User(
-                "area",
-                "name",
-                "https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png"
-            ),
-            1
-        )
+    fun getReadItem(readId: String) {
+        viewModelScope.launch {
+            kotlin.runCatching {
+                readService.getReadItem(readId)
+            }.onSuccess { response ->
+                val data = response.data ?: throw NullPointerException("Read 통신 에러")
+                _readItem.postValue(data)
+            }.onFailure {
 
-        readItem.value?.let { initState(it.onSale) }
+            }
+        }
     }
 
     companion object {
