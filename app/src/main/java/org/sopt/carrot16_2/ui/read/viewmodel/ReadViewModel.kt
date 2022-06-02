@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import org.sopt.carrot16_2.data.remote.RetrofitBuilder
+import org.sopt.carrot16_2.data.remote.entity.request.StateRequest
 import org.sopt.carrot16_2.data.remote.entity.response.ReadResponse
 import org.sopt.carrot16_2.data.remote.service.ReadService
 
@@ -25,13 +26,31 @@ class ReadViewModel : ViewModel() {
     fun initState(state: Int) {
         _state.value = state
         _readItem.value?.onSale = state
-        Log.d("testttt", readItem.value?.onSale.toString())
+        viewModelScope.launch {
+            kotlin.runCatching {
+                _readItem.value?._id?.let { id ->
+                    readService.setOnSale(StateRequest(id, state))
+                }
+            }.onSuccess {
+                Log.d("testtt", it.toString())
+            }.onFailure {
+                Log.d("testtt", it.toString())
+            }
+        }
     }
 
     fun initHeart() {
         _isLiked.value = _isLiked.value != true
         _readItem.value?.isLiked = readItem.value?.isLiked != true
-        Log.d("testttt", readItem.value?.isLiked.toString())
+        viewModelScope.launch {
+            kotlin.runCatching {
+                _readItem.value?._id?.let { readService.setLike(it) }
+            }.onSuccess {
+                Log.d("testtt", it.toString())
+            }.onFailure {
+                Log.d("testtt", it.toString())
+            }
+        }
     }
 
     fun getReadItem(readId: String) {
