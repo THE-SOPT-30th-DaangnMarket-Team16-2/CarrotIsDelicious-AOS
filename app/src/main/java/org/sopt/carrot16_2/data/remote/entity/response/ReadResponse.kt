@@ -8,7 +8,7 @@ data class ReadResponse(
     var isLiked: Boolean,
     val isPriceSuggestion: String,
     var onSale: Int,
-    val price: Int,
+    val price: String,
     val title: String,
     val user: User,
     val view: Int

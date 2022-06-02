@@ -8,6 +8,6 @@ import retrofit2.http.Path
 interface ReadService {
     @GET("feed/:{itemId}")
     suspend fun getReadItem(
-        @Path("itemId") itemId: Int
+        @Path("itemId") itemId: String
     ): BaseResponse<ReadResponse>
 }
