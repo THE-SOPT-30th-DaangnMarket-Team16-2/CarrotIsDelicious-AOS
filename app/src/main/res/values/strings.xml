@@ -32,4 +32,6 @@
     <string name="read_dot">·</string>
     <string name="read_views">조회</string>
     <string name="read_price_won">원</string>
+    <string name="read_price_suggestion_true">가격 제안하기</string>
+    <string name="read_price_suggestion_false">가격 제안 불가</string>
 </resources>

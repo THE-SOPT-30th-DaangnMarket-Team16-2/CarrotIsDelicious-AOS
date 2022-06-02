@@ -9,7 +9,7 @@ import org.sopt.carrot16_2.R
 object BindingAdapters {
     @JvmStatic
     @BindingAdapter("setImage")
-    fun setImage(imageview: ImageView, url: String) {
+    fun setImage(imageview: ImageView, url: String?) {
         Glide.with(imageview.context)
             .load(url)
             .into(imageview)
@@ -17,7 +17,7 @@ object BindingAdapters {
 
     @JvmStatic
     @BindingAdapter("setCircleImage")
-    fun setCircleImage(imageview: ImageView, url: String) {
+    fun setCircleImage(imageview: ImageView, url: String?) {
         Glide.with(imageview.context)
             .load(url)
             .circleCrop()
@@ -26,7 +26,7 @@ object BindingAdapters {
 
     @JvmStatic
     @BindingAdapter("setReadState")
-    fun setReadState(textView: TextView, state: Int) {
+    fun setReadState(textView: TextView, state: Int?) {
         textView.setText(
             when (state) {
                 0 -> R.string.state_selling

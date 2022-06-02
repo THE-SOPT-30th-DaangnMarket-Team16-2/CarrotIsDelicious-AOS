@@ -1,21 +1,24 @@
 package org.sopt.carrot16_2.data.remote.entity.response
 
 data class ReadResponse(
+    val __v: Int,
+    val _id: String,
     val category: String,
-    val content: String,
-    val createdAt: String,
-    val image: List<String>,
+    val contents: String,
+    val createAt: String,
+    val images: List<String>,
     var isLiked: Boolean,
-    val isPriceSuggestion: String,
+    val isPriceSuggestion: Boolean,
     var onSale: Int,
-    val price: String,
+    val price: Int,
     val title: String,
     val user: User,
     val view: Int
 )
 
 data class User(
-    val area: String,
+    val _id: String,
     val name: String,
-    val profile: String
+    val profile: String,
+    val region: String
 )
