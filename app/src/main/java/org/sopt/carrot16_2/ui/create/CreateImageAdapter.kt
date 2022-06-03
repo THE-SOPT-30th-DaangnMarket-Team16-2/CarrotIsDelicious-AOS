@@ -1,5 +1,7 @@
 package org.sopt.carrot16_2.ui.create
 
+import android.provider.SyncStateContract.Helpers.update
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -7,12 +9,16 @@ import androidx.recyclerview.widget.RecyclerView
 import org.sopt.carrot16_2.R
 import org.sopt.carrot16_2.databinding.ItemImageListBinding
 import org.sopt.carrot16_2.model.ImageData
+import org.sopt.carrot16_2.ui.create.viewmodel.CreateViewModel
 
-class CreateImageAdapter : RecyclerView.Adapter<CreateImageAdapter.CreateImageViewHolder>() {
+class CreateImageAdapter(private val itemCounts: (Int) -> (Unit)) :
+    RecyclerView.Adapter<CreateImageAdapter.CreateImageViewHolder>() {
     val imageList = mutableListOf<ImageData>()
-    val createActivity = CreateActivity()
 
-    inner class CreateImageViewHolder(private val binding: ItemImageListBinding) :
+    inner class CreateImageViewHolder(
+        private val binding: ItemImageListBinding,
+        private val itemCounts: (Int) -> Unit
+    ) :
         RecyclerView.ViewHolder(binding.root) {
         fun onBind(image: ImageData) {
             binding.image = image
@@ -20,6 +26,7 @@ class CreateImageAdapter : RecyclerView.Adapter<CreateImageAdapter.CreateImageVi
                 imageList.removeAt(adapterPosition)
                 notifyItemRemoved(adapterPosition)
                 notifyItemRangeChanged(adapterPosition, imageList.size)
+                itemCounts(imageList.size)
             }
         }
     }
@@ -31,7 +38,7 @@ class CreateImageAdapter : RecyclerView.Adapter<CreateImageAdapter.CreateImageVi
             parent,
             false
         )
-        return CreateImageViewHolder(binding)
+        return CreateImageViewHolder(binding, itemCounts)
     }
 
     override fun onBindViewHolder(holder: CreateImageViewHolder, position: Int) {

@@ -2,6 +2,7 @@ package org.sopt.carrot16_2.ui.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import org.sopt.carrot16_2.R
@@ -31,6 +32,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
             val intent = Intent(this,ReadActivity::class.java)
             intent.apply {
                 intent.putExtra("id",it.id)
+                Log.e("dksfjls",it.id)
             }
             startActivity(intent)
         }

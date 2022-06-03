@@ -12,6 +12,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import org.sopt.carrot16_2.R
 import org.sopt.carrot16_2.data.remote.RetrofitBuilder
@@ -48,13 +49,16 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
         initAdapter()
         changeEvent()
         initFinishBtnClickListener()
-        //completeEvent()
+        imageCountObserver()
         imageUpload()
         clickBackButton()
     }
 
+    // 리사이클러뷰에 이미지 개수 표시하기 위해 람다로 선언해서 뷰모델에 개수 전달
     private fun initAdapter() {
-        createImageAdapter = CreateImageAdapter()
+        createImageAdapter = CreateImageAdapter{
+            createViewModel.updateImageCount(it)
+        }
         binding.rvImage.adapter = createImageAdapter
     }
 
@@ -68,6 +72,12 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
                 binding.tvSugMoney.setTextColor(getColor(R.color.carrot_and_squaregray))
             }
         }
+    }
+
+    private fun imageCountObserver() {
+        createViewModel.imageCount.observe(this, Observer {
+            binding.tvPickedImage.text = it.toString()
+        })
     }
 
     //완료 버튼 클릭시 데이터 전송
@@ -145,7 +155,8 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
             photoUri = result.data?.data
             createImageAdapter.imageList.add(ImageData(photoUri.toString()))
             createImageAdapter.notifyDataSetChanged()
-            imageCount()
+            //imageCount()
+            createViewModel.updateImageCount(createImageAdapter.itemCount)
 
 
         }else if(result.resultCode == RESULT_CANCELED){

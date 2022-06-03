@@ -124,7 +124,7 @@
                             android:layout_marginTop="2dp"
                             android:fontFamily="@font/roboto_medium"
                             android:includeFontPadding="false"
-                            android:text="0"
+                            android:text="@{Integer.toString(createViewModel.imageCount)}"
                             android:textColor="@color/carrot_and_black2"
                             android:textSize="18sp"
                             app:layout_constraintEnd_toStartOf="@+id/tv_all_image"

@@ -30,7 +30,6 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
 
     private fun initReadId() {
         readId = intent.getStringExtra("id").toString()
-        readId = "628f3743b32d474b28bba948"
     }
 
     private fun initReadItem() {
