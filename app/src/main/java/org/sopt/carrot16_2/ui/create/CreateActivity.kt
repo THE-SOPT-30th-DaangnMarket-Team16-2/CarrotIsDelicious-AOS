@@ -50,6 +50,7 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
         initFinishBtnClickListener()
         //completeEvent()
         imageUpload()
+        clickBackButton()
     }
 
     private fun initAdapter() {
@@ -144,12 +145,17 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
             photoUri = result.data?.data
             createImageAdapter.imageList.add(ImageData(photoUri.toString()))
             createImageAdapter.notifyDataSetChanged()
-            binding.tvPickedImage.text = createImageAdapter.itemCount.toString()
+            imageCount()
 
 
         }else if(result.resultCode == RESULT_CANCELED){
             Toast.makeText(this,"사진을 가져오지 못했습니다.", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    //리사이클러뷰에 이미지 개수 설정
+    fun imageCount() {
+        binding.tvPickedImage.text = createImageAdapter.itemCount.toString()
     }
 
 
@@ -165,6 +171,12 @@ class CreateActivity : BaseActivity<ActivityCreateBinding>(R.layout.activity_cre
             }
             .create()
             .show()
+    }
+
+    private fun clickBackButton(){
+        binding.btnBack.setOnClickListener{
+            finish()
+        }
     }
 
 }

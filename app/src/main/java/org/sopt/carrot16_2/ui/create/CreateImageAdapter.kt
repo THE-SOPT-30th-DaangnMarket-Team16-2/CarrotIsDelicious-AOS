@@ -10,6 +10,7 @@ import org.sopt.carrot16_2.model.ImageData
 
 class CreateImageAdapter : RecyclerView.Adapter<CreateImageAdapter.CreateImageViewHolder>() {
     val imageList = mutableListOf<ImageData>()
+    val createActivity = CreateActivity()
 
     inner class CreateImageViewHolder(private val binding: ItemImageListBinding) :
         RecyclerView.ViewHolder(binding.root) {
