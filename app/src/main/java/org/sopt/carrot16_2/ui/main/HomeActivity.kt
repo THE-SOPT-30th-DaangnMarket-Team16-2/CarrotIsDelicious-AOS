@@ -12,6 +12,7 @@ import org.sopt.carrot16_2.ui.create.CreateActivity
 import org.sopt.carrot16_2.ui.main.viewmodel.HomeViewModel
 import org.sopt.carrot16_2.ui.read.ReadActivity
 import org.sopt.carrot16_2.util.enqueueUtil
+import org.sopt.carrot16_2.util.ItemDecoration
 
 class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     private lateinit var sellAdapter: SellAdapter
@@ -20,7 +21,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.homeViewModel = homeViewModel
-
+        binding.rvHomeContent.addItemDecoration(ItemDecoration("#F1F1F1"))
         initAdapter()
         initWriteBtnClickListener()
     }
