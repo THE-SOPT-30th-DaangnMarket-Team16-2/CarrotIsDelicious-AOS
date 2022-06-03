@@ -10,6 +10,7 @@ import org.sopt.carrot16_2.databinding.ActivityHomeBinding
 import org.sopt.carrot16_2.ui.base.BaseActivity
 import org.sopt.carrot16_2.ui.create.CreateActivity
 import org.sopt.carrot16_2.ui.main.viewmodel.HomeViewModel
+import org.sopt.carrot16_2.ui.read.ReadActivity
 import org.sopt.carrot16_2.util.enqueueUtil
 
 class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
@@ -25,7 +26,13 @@ class HomeActivity : BaseActivity<ActivityHomeBinding>(R.layout.activity_home) {
     }
 
     private fun initAdapter() {
-        sellAdapter = SellAdapter()
+        sellAdapter = SellAdapter{
+            val intent = Intent(this,ReadActivity::class.java)
+            intent.apply {
+                intent.putExtra("id",it.id)
+            }
+            startActivity(intent)
+        }
         binding.rvHomeContent.adapter = sellAdapter
         val call = RetrofitBuilder.homeService.getHomeFeed()
         call.enqueueUtil(
