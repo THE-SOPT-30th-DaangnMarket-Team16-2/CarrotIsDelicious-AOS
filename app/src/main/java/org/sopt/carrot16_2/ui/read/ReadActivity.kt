@@ -38,7 +38,7 @@ class ReadActivity : BaseActivity<ActivityReadBinding>(R.layout.activity_read) {
 
     private fun initReadItemObserver() {
         readViewModel.readItem.observe(this) {
-            readViewPagerAdapter.updateHabitList(it.images)
+            readViewPagerAdapter.updateHabitList(it.image)
             binding.readViewModel = readViewModel
         }
 
