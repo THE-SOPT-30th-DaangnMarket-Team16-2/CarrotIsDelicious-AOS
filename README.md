@@ -13,3 +13,6 @@
 
 
 ## 클-서 세미나 시연 영상
+
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/81394850/172053918-340fc8c2-0cf0-4e14-8d00-904d9bd92445.png">
+<img width="300" alt="image" src="https://user-images.githubusercontent.com/81394850/172053942-37d68c62-346e-468e-a732-e2034d3b8257.png">
