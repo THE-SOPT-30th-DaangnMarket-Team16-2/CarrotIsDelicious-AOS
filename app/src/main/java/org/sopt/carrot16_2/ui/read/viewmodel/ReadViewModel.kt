@@ -20,21 +20,21 @@ class ReadViewModel : ViewModel() {
     private val _isLiked = MutableLiveData<Boolean>()
     val isLiked: LiveData<Boolean> = _isLiked
 
-    private val _state = MutableLiveData<Int>()
-    val state: LiveData<Int> = _state
+    private val _state = MutableLiveData<String>()
+    val state: LiveData<String> = _state
 
-    fun initState(state: Int) {
+    fun initState(state: String) {
         _state.value = state
         _readItem.value?.onSale = state
         viewModelScope.launch {
             kotlin.runCatching {
-                _readItem.value?._id?.let { id ->
+                _readItem.value?.id?.let { id ->
                     readService.setOnSale(StateRequest(id, state))
                 }
             }.onSuccess {
-                Log.d("testtt", it.toString())
+                Log.d("initStateOnSuccess", it.toString())
             }.onFailure {
-                Log.d("testtt", it.toString())
+                Log.e("initStateOnFailure", it.toString())
             }
         }
     }
@@ -44,11 +44,11 @@ class ReadViewModel : ViewModel() {
         _readItem.value?.isLiked = readItem.value?.isLiked != true
         viewModelScope.launch {
             kotlin.runCatching {
-                _readItem.value?._id?.let { readService.setLike(it) }
+                _readItem.value?.id?.let { readService.setLike(it) }
             }.onSuccess {
-                Log.d("testtt", it.toString())
+                Log.d("initHeartOnSuccess", it.toString())
             }.onFailure {
-                Log.d("testtt", it.toString())
+                Log.e("initHeartOnFailure", it.toString())
             }
         }
     }
@@ -58,17 +58,18 @@ class ReadViewModel : ViewModel() {
             kotlin.runCatching {
                 readService.getReadItem(readId)
             }.onSuccess { response ->
+                Log.d("getReadItemOnSuccess", response.toString())
                 val data = response.data ?: throw NullPointerException("Read 통신 에러")
                 _readItem.postValue(data)
             }.onFailure {
-
+                Log.e("getReadItemOnFailure", it.toString())
             }
         }
     }
 
     companion object {
-        const val STATE_SELLING = 0
-        const val STATE_COMPLETED = 1
-        const val STATE_RESERVING = 2
+        const val STATE_SELLING = "0"
+        const val STATE_COMPLETED = "1"
+        const val STATE_RESERVING = "2"
     }
 }
