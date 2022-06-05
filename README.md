@@ -13,3 +13,4 @@
 
 
 ## 클-서 세미나 시연 영상
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/58066704/172037531-9b48752d-f647-4895-8d80-b81249db4594.gif)
